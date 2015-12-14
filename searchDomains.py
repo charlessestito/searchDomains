@@ -30,12 +30,12 @@ if __name__ == '__main__':
     #Grab domains from psl
     for line in f1.readlines():
         slvl = psl.get_public_suffix(line.strip())
-        parts = re.split('\W+',slvl)
+        parts = slvl.split('.')
         dictionary[parts[0]] = 1
     
     #Check if word is in dictionary, if so print it
     for lines in f2.readlines():
-        segments = re.split('\W+',lines)
+        segments = lines.split('.')
         for name in segments:
             if dictionary.has_key(name):
                 print lines 
